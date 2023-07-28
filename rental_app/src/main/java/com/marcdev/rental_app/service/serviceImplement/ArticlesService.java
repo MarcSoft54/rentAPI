@@ -16,24 +16,23 @@ public class ArticlesService implements ArticlesImplService {
 
     @Override
     public Articles createArticle(Articles articles) {
-        return null;
+        return articlesRepository.save(articles);
     }
 
     @Override
     public void deleteArticle(Articles articles) {
-
+            articlesRepository.delete(articles);
     }
 
     @Override
     public void updateArticle(Articles articles) {
-
+        articlesRepository.save(articles);
     }
 
     @Override
     public Optional<Articles> searchArticle(Long id) {
         return articlesRepository.findById(id);
     }
-
 
     @Override
     public Iterable<Articles> getArticles() {

@@ -8,11 +8,11 @@ public interface RankingImplService {
 
     boolean createDislike(Users users);
 
-    void deleteLike();
+    void deleteLike(Long id);
 
-    void deleteDislike();
+    void deleteDislike(Long id);
 
-    int getLike();
+    Long getLike();
 
-    int getDislike();
+    Long getDislike();
 }
