@@ -11,11 +11,13 @@ import java.util.Set;
 @Table(name = "comments")
 public class Commenter {
 
-    @OneToMany(mappedBy = "commenter")
-    Set<Users> commentUsers;
+    @ManyToOne
+            @JoinColumn( name= "user_id")
+    private Users users;
 
-    @OneToMany(mappedBy = "commenter")
-    Set<Articles> articles;
+    @ManyToOne
+    @JoinColumn(name = "articles_id")
+    private Articles articles;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

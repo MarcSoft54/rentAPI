@@ -10,15 +10,14 @@ import java.util.Set;
 public class Articles {
 
     @ManyToOne
-    @JoinColumn(name = "id_users", nullable = false)
+    @JoinColumn(name = "users_id", nullable = false)
     Users users;
 
-    @ManyToOne
-    @JoinColumn(name = "id_articles") //comment
-    Commenter commenter;
-
     @OneToMany(mappedBy = "articles")
-    Set<Ranking> rankings;
+    Set<Commenter> commenters;
+
+//    @OneToMany(mappedBy = "articles")
+//    Set<Ranking> rankings;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
