@@ -14,13 +14,13 @@ public class Ranking {
     private Long id_ranking;
 
 
-    @ManyToOne
-    @JoinColumn(name = "id_users")
-    Users users;
+//    @ManyToOne
+//    @JoinColumn(name = "id_users")
+//    Users users;
 
-    @ManyToOne
-    @JoinColumn(name = "id_articles")
-    Articles articles;
+//    @ManyToOne
+//    @JoinColumn(name = "id_articles")
+//    Articles articles;
 
 
     @Column(name = "like")
