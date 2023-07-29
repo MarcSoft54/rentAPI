@@ -1,12 +1,12 @@
 package com.marcdev.rental_app.service.implServiceInterfaces;
 
-import com.marcdev.rental_app.model.Users;
+import com.marcdev.rental_app.model.User;
 
 public interface RankingImplService {
 
-    boolean createLike(Users users);
+    boolean createLike(User user);
 
-    boolean createDislike(Users users);
+    boolean createDislike(User user);
 
     void deleteLike(Long id);
 

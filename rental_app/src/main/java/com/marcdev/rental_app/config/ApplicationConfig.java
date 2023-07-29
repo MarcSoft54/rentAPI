@@ -1,7 +1,7 @@
 package com.marcdev.rental_app.config;
 
 import com.marcdev.rental_app.repository.UsersRepository;
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@Data
+@RequiredArgsConstructor
 public class ApplicationConfig {
 
     final UsersRepository usersRepository;

@@ -1,14 +1,13 @@
 package com.marcdev.rental_app.repository;
 
-import com.marcdev.rental_app.model.Users;
+import com.marcdev.rental_app.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users, Long> {
+public interface UsersRepository extends JpaRepository<User, Long> {
 
-    public Optional<Users> findByEmail(String email);
+    public Optional<User> findByEmail(String email);
 }

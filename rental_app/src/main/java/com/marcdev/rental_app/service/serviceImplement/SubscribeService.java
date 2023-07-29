@@ -1,6 +1,5 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
-import com.marcdev.rental_app.model.Users;
 import com.marcdev.rental_app.repository.SubscribeRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.SubscribeImplService;
 import org.springframework.beans.factory.annotation.Autowired;

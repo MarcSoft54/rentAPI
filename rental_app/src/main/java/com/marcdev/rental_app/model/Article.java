@@ -6,19 +6,18 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "articles")
-public class Articles {
+@Table(name = "article")
+public class Article {
 
     @ManyToOne
     @JoinColumn(name = "id_users", nullable = false)
-    Users users;
+    User user;
 
-    @ManyToOne
-    @JoinColumn(name = "id_articles") //comment
-    Commenter commenter;
+    @OneToMany(mappedBy = "article")
+    Set<Commenter> commenters;
 
-    @OneToMany(mappedBy = "articles")
-    Set<Ranking> rankings;
+    @OneToMany(mappedBy = "article")
+    Set<Ranking> ranking;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,9 +54,9 @@ public class Articles {
     @Column(name = "createAt")
     private Timestamp createAt;
     @Column(name = "createBy")
-    private Users createBy;
+    private User createBy;
     @Column(name = "lastModifyBy")
-    private Users lastModifyBy;
+    private User lastModifyBy;
     @Column(name = "lastModifyAt")
     private Timestamp lastModifyAt;
 }

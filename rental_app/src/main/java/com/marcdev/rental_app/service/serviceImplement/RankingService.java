@@ -1,6 +1,6 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
-import com.marcdev.rental_app.model.Users;
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.RankingRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.RankingImplService;
 import org.springframework.stereotype.Service;
@@ -11,12 +11,12 @@ public class RankingService implements RankingImplService {
     RankingRepository rankingRepository;
 
     @Override
-    public boolean createLike(Users users) {
+    public boolean createLike(User user) {
         return true;
     }
 
     @Override
-    public boolean createDislike(Users users) {
+    public boolean createDislike(User user) {
         return false;
     }
 

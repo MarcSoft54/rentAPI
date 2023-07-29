@@ -4,18 +4,19 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "comments")
 public class Commenter {
 
-    @OneToMany(mappedBy = "commenter")
-    Set<Users> commentUsers;
+    @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "commenter")
-    Set<Articles> articles;
+    @ManyToOne
+    @JoinColumn(name = "id_articles", nullable = false)
+    private Article article;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

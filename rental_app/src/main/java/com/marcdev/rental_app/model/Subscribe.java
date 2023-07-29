@@ -8,9 +8,10 @@ import java.sql.Timestamp;
 @Data
 @Table(name = "subscribe")
 public class Subscribe {
+
     @ManyToOne
     @JoinColumn(name = "id_users")
-    Users users;
+    User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

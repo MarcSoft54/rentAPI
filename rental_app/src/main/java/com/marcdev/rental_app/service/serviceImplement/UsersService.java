@@ -1,6 +1,6 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
-import com.marcdev.rental_app.model.Users;
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.UsersRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.UsersImplService;
 import lombok.Builder;
@@ -15,8 +15,8 @@ public class UsersService implements UsersImplService {
     UsersRepository usersRepository;
 
     @Override
-    public Users createUser(Users users, String mail) {
-        return usersRepository.save(users);
+    public User createUser(User user, String mail) {
+        return usersRepository.save(user);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class UsersService implements UsersImplService {
     }
 
     @Override
-    public void updateUsers(Users users) {
-        usersRepository.save(users);
+    public void updateUsers(User user) {
+        usersRepository.save(user);
     }
 }

@@ -13,15 +13,13 @@ public class Ranking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_ranking;
 
-
     @ManyToOne
     @JoinColumn(name = "id_users")
-    Users users;
+    User user;
 
     @ManyToOne
     @JoinColumn(name = "id_articles")
-    Articles articles;
-
+    Article article;
 
     @Column(name = "like")
     private Long like;

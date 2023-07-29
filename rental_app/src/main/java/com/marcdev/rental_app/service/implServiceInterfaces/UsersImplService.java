@@ -1,15 +1,13 @@
 package com.marcdev.rental_app.service.implServiceInterfaces;
 
-import com.marcdev.rental_app.model.Users;
-
-import java.security.Principal;
+import com.marcdev.rental_app.model.User;
 
 public interface UsersImplService {
-    Users createUser(Users users, String mail);
+    User createUser(User user, String mail);
 
     void deleteUsers(Long id);
 
-    void updateUsers(Users users);
+    void updateUsers(User user);
 
 
 }

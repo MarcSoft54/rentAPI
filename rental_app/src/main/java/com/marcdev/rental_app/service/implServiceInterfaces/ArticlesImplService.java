@@ -1,18 +1,18 @@
 package com.marcdev.rental_app.service.implServiceInterfaces;
 
-import com.marcdev.rental_app.model.Articles;
+import com.marcdev.rental_app.model.Article;
 
 import java.util.Optional;
 
 public interface ArticlesImplService {
-    Articles createArticle(Articles articles);
+    Article createArticle(Article article);
 
-    void deleteArticle(Articles articles);
+    void deleteArticle(Article article);
 
-    void updateArticle(Articles articles);
+    void updateArticle(Article article);
 
-    Optional<Articles> searchArticle(Long id);
+    Optional<Article> searchArticle(Long id);
 
-    Iterable<Articles> getArticles();
+    Iterable<Article> getArticles();
 
 }
