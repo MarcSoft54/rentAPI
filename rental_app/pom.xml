@@ -29,7 +29,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -64,52 +63,21 @@
 			<version>0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.nimbusds</groupId>
-			<artifactId>oidc-claims-source-http</artifactId>
-			<version>2.2.1</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
 		</dependency>
 		<dependency>
-			<groupId>com.nimbusds</groupId>
-			<artifactId>oidc-claims-source-http</artifactId>
-			<version>2.2.1</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
 		</dependency>
 		<dependency>
-			<groupId>io.github.gonguasp</groupId>
-			<artifactId>jwt</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.softwaremill.akka-http-session</groupId>
-			<artifactId>jwt_2.12</artifactId>
-			<version>0.7.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.khoben.woff2-android</groupId>
-			<artifactId>decoder</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.khoben.woff2-android</groupId>
-			<artifactId>decoder</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.khoben.woff2-android</groupId>
-			<artifactId>decoder</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>be.atbash.keys</groupId>
-			<artifactId>keys-server-parent</artifactId>
-			<version>0.5</version>
-		</dependency>
-		<dependency>
-			<groupId>be.atbash.keys</groupId>
-			<artifactId>keys-server-parent</artifactId>
-			<version>0.5</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

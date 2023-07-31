@@ -1,10 +1,13 @@
 package com.marcdev.rental_app.config;
 
+import com.marcdev.rental_app.auth.CreateAccount;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
@@ -12,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-@Service
+@Component
 public class JwtService {
 
-    private static final String SECRET_KEY = "0123456789";
+    private static final String SECRET_KEY = "01234567890123456789012345678901234567890123456789";
 
     public String extractName(String token){
         return extractClaim(token, Claims::getSubject);
@@ -38,7 +41,7 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 10000))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .signWith(SignatureAlgorithm.HS256, getSignInKey())
                 .compact();
     }
 
@@ -57,16 +60,13 @@ public class JwtService {
 
     private Claims extractAllClaim(String token){
         return Jwts.parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
+                .setSigningKey(getSignInKey()).build()
                 .parseClaimsJws(token)
                 .getBody();
-
     }
 
-    private Key getSignInKey(){
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY) ;
+   public Key getSignInKey(){
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
-    }
-
+   }
 }

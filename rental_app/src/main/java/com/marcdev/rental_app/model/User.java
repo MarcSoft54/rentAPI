@@ -1,7 +1,10 @@
 package com.marcdev.rental_app.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +14,9 @@ import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name="users")
 public class User implements UserDetails {
     @OneToMany(mappedBy = "user")//article relationShip
@@ -41,14 +47,18 @@ public class User implements UserDetails {
     @Column(name = "password",nullable = false)
     private String password;
 
-    @Column(name = "sex", nullable = false)
+    @Column(name = "sex")
     private String sex;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private Long phone_number;
 
     @Column(name = "country")
     private String country;
+
+    @Column(name = "role")
+    private Role role;
+
 
 
     @Override

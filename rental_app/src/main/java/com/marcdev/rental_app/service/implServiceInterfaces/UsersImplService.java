@@ -1,13 +1,17 @@
 package com.marcdev.rental_app.service.implServiceInterfaces;
 
+import com.marcdev.rental_app.auth.AuthentificationRequest;
+import com.marcdev.rental_app.auth.AuthentificationResponse;
+import com.marcdev.rental_app.auth.CreateAccount;
 import com.marcdev.rental_app.model.User;
 
 public interface UsersImplService {
-    User createUser(User user, String mail);
+    AuthentificationResponse createUser(CreateAccount account);
 
-    void deleteUsers(Long id);
+    void deleteUsers(AuthentificationRequest request);
 
-    void updateUsers(User user);
+    AuthentificationResponse updateUsers(AuthentificationRequest request, User user);
 
+    AuthentificationResponse login(AuthentificationRequest request);
 
 }
