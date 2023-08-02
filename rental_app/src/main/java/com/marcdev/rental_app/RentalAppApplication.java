@@ -22,7 +22,6 @@ public class RentalAppApplication implements CommandLineRunner {
 		UserDTO userDTO = new UserDTO();
 
 		UserController userController = new UserController();
-
 		userDTO.setCountry("Cameroun");
 		userDTO.setPhoneNumber(657284175L);
 		userDTO.setSex("Male");

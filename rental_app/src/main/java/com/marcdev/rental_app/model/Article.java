@@ -17,7 +17,7 @@ import java.util.Set;
 public class Article {
 
     @ManyToOne
-    @JoinColumn(name = "id_users", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     User user;
 
     @OneToMany(mappedBy = "article")

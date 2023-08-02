@@ -59,19 +59,19 @@ public class UsersService implements UsersImplService {
     public AuthentificationResponse updateUsers(AuthentificationRequest request, User user) {
         Optional<User> user1 = usersRepository.findByEmail(request.getEmail());
         if(user1.isPresent()){
-            user.setPassWord(user.getPassword());
-            user.setEmail(user.getEmail());
-            user.setCountry(user.getCountry());
-            user.setPhoneNumber(user.getPhoneNumber());
-            user.setUsername(user.getUsername());
-            user.setSurname(user.getSurname());
+            user1.get().setPassWord(user.getPassWord());
+            user1.get().setEmail(user.getEmail());
+            user1.get().setCountry(user.getCountry());
+            user1.get().setPhoneNumber(user.getPhoneNumber());
+            user1.get().setUsername(user.getUsername());
+            user1.get().setSurname(user.getSurname());
 
-            usersRepository.save(user);
+            usersRepository.save(user1.get());
+
+            var jwtServices = jwtService.genereToken(user);
+            return AuthentificationResponse.builder().token(jwtServices).build();
         }
-        var jwtServices = jwtService.genereToken(user);
-        return AuthentificationResponse.builder().token(jwtServices).build();
-
-
+        return null;
     }
 
     @Override

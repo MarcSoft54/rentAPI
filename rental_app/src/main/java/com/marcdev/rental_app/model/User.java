@@ -2,20 +2,21 @@ package com.marcdev.rental_app.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
-import java.util.Collection;
 import java.util.Set;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
+@Component
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name="user")
-public class User implements UserDetails {
+@Table(name="users")
+public class User extends CustomUserDetails{
+
     @OneToMany(mappedBy = "user")//article relationShip
     Set<Article> article;
 
@@ -48,33 +49,4 @@ public class User implements UserDetails {
     @Column()
     private Role role;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }
