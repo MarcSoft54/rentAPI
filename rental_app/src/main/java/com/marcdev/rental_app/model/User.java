@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name="users")
+@Table(name="users", schema = "rent")
 public class User extends CustomUserDetails{
 
     @OneToMany(mappedBy = "user")//article relationShip
@@ -49,4 +49,7 @@ public class User extends CustomUserDetails{
     @Column()
     private Role role;
 
+    public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
+        super();
+    }
 }

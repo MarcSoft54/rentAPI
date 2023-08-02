@@ -1,6 +1,7 @@
 package com.marcdev.rental_app;
 
 import com.marcdev.rental_app.controller.UserController;
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.modelDto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,18 +19,18 @@ public class RentalAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		UserDTO userDTO = new UserDTO();
+		User user = new User();
 
 		UserController userController = new UserController();
-		userDTO.setCountry("Cameroun");
-		userDTO.setPhoneNumber(657284175L);
-		userDTO.setSex("Male");
-		userDTO.setUsername("Marc dev");
-		userDTO.setSurname("William");
-		userDTO.setMail("marcdev@gmail.com");
-		userDTO.setPassWord("marcdev");
 
-		userController.createUser(userDTO);
+		user.setCountry("Cameroun");
+		user.setPhoneNumber(657284175L);
+		user.setSex("Male");
+		user.setUsername("Marc dev");
+		user.setSurname("William");
+		user.setEmail("marcdev@gmail.com");
+		user.setPassWord("marcdev");
+
+		userController.createUser(user);
 	}
 }

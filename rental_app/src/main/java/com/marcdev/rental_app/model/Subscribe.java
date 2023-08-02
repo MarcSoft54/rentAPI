@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "subscribe")
+@Table(name = "subscribe", schema = "rent")
 public class Subscribe {
 
     @ManyToOne

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "ranking")
+@Table(name = "ranking", schema = "rent")
 public class Ranking {
 
     @Id

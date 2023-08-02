@@ -13,7 +13,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "article")
+@Table(name = "article", schema = "rent")
 public class Article {
 
     @ManyToOne
