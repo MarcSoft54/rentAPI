@@ -1,9 +1,9 @@
 package com.marcdev.rental_app.service.implServiceInterfaces;
 
-import com.marcdev.rental_app.model.Commenter;
+import com.marcdev.rental_app.modelDto.CommentDTO;
+import com.marcdev.rental_app.model.Comment;
 
 public interface CommentImplServices {
-    Commenter createComment(Commenter commenter);
-
-    Iterable<Commenter> getComment();
+    void createComment(CommentDTO commenter);
+    Iterable<Comment> getComment();
 }

@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 import java.util.Set;
 
 
@@ -17,72 +13,46 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name="users")
-public class User implements UserDetails {
+@Table(name="user")
+public class User extends CustomUserDetail{
     @OneToMany(mappedBy = "user")//article relationShip
-    Set<Article> articles;
+    Set<Article> article;
 
     @OneToMany(mappedBy = "user") //subscribes
-    Set<Subscribe> subscribes;
+    Set<Subscribe> subscribe;
 
     @OneToMany(mappedBy = "user")
-    Set<Commenter> commenters;
+    Set<Comment> comment;
 
     @OneToMany(mappedBy = "user")
-    Set<Ranking> rankings;
+    Set<Ranking> ranking;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_users;
+    private Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(nullable = false)
     private String username;
 
-    @Column(name = "surname", nullable = false)
+    @Column(nullable = false)
     private String surname;
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false)
     private String email;
 
-    @Column(name = "password",nullable = false)
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "sex")
+    @Column
     private String sex;
 
-    @Column(name = "phone_number")
+    @Column( nullable = false)
     private Long phone_number;
 
-    @Column(name = "country")
+    @Column
     private String country;
 
-    @Column(name = "role")
+    @Column(nullable = false)
     private Role role;
 
-
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }

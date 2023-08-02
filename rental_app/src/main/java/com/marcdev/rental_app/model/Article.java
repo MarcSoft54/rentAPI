@@ -21,49 +21,50 @@ public class Article {
     User user;
 
     @OneToMany(mappedBy = "article")
-    Set<Commenter> commenters;
+    Set<Comment> comments;
 
     @OneToMany(mappedBy = "article")
     Set<Ranking> ranking;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_articles;
-    @Column(name = "type_articles", nullable = false)
-    private String type_articles;
-    @Column(name = "price_articles", nullable = false)
-    private double price_articles;
-    @Column(name = "country", nullable = false)
+    private Long id;
+
+    @Column(name = "type_article", nullable = false)
+    private String typeArticle;
+    @Column(name = "price_article", nullable = false)
+    private double priceArticle;
+    @Column(nullable = false)
     private String country;
-    @Column(name = "city",nullable = false)
+    @Column(nullable = false)
     private String city;
     @Column(name = "map_url",nullable = false)
-    private String map_url;
-    @Column(name = "pictures",nullable = false)
-    private String pictures_articles;
+    private String mapUrl;
+    @Column(name = "picture",nullable = false)
+    private String picturesArticle;
     @Column(name = "video", nullable = false)
-    private String video_articles;
-    @Column(name = "description", nullable = false)
+    private String videoArticles;
+    @Column(nullable = false)
     private String description;
-    @Column(name = "parent")
+    @Column
     private Long parent;
-    @Column(name = "rooms", nullable = false)
-    private int rooms;
-    @Column(name = "showers")
-    private int showers;
-    @Column(name = "parking")
+    @Column(nullable = false)
+    private int room;
+    @Column
+    private int shower;
+    @Column
     private int parking;
-    @Column(name = "kitchen")
+    @Column
     private int kitchen;
-    @Column(name = "livingRoom")
+    @Column
     private int livingRoom;
 
-    @Column(name = "createAt")
+    @Column
     private Timestamp createAt;
-    @Column(name = "createBy")
+    @Column
     private User createBy;
-    @Column(name = "lastModifyBy")
+    @Column
     private User lastModifyBy;
-    @Column(name = "lastModifyAt")
+    @Column
     private Timestamp lastModifyAt;
 }

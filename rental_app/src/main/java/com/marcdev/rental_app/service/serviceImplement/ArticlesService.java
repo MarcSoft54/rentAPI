@@ -1,10 +1,8 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
-import com.marcdev.rental_app.auth.AuthentificationResponse;
-import com.marcdev.rental_app.auth.CreateArticle;
-import com.marcdev.rental_app.config.JwtService;
+import com.marcdev.rental_app.modelDto.ArticleDTO;
 import com.marcdev.rental_app.model.Article;
-import com.marcdev.rental_app.model.Commenter;
+import com.marcdev.rental_app.model.Comment;
 import com.marcdev.rental_app.model.Ranking;
 import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.ArticlesRepository;
@@ -24,47 +22,68 @@ public class ArticlesService implements ArticlesImplService {
 
 
     @Override
-    public String createArticle(CreateArticle article) {
+    public String createArticle(ArticleDTO article) {
         var article1 = Article.builder()
-                .type_articles(article.getTypeArticle())
+                .typeArticle(article.getTypeArticle())
                 .country(article.getCountry())
                 .city(article.getCity())
                 .description(article.getDescription())
                 .livingRoom(article.getLivingRoom())
                 .kitchen(article.getKitchen())
-                .pictures_articles(article.getPictureArticle())
-                .video_articles(article.getVideoArticle())
+                .picturesArticle(article.getPictureArticle())
+                .videoArticles(article.getVideoArticle())
                 .parent(article.getParent())
-                .map_url(article.getMap_url())
-                .rooms(article.getRooms())
-                .price_articles(article.getPriceArticle())
-                .showers(article.getShowers())
+                .mapUrl(article.getMapUrl())
+                .room(article.getRooms())
+                .priceArticle(article.getPriceArticle())
+                .shower(article.getShowers())
                 .parking(article.getParking())
                 .lastModifyAt(Timestamp.valueOf(LocalDateTime.now()))
                 .lastModifyBy(new User())
                 .createBy(new User())
                 .createAt(Timestamp.valueOf(LocalDateTime.now()))
-                .commenters(new Commenter().getArticle().getCommenters())
+                .comments(new Comment().getArticle().getComments())
                 .ranking(new Ranking().getArticle().getRanking())
                 .build();
         articlesRepository.save(article1);
-        return "succefully registration";
+        return "Successful Registration";
     }
 
     @Override
     public void deleteArticle(Article article) {
-            articlesRepository.delete(article);
+        articlesRepository.delete(article);
     }
 
     @Override
-    public AuthentificationResponse updateArticle(Article article) {
-        return null;
+    public String updateArticle(Article article) {
+        Optional<Article> article1 = articlesRepository.findByArticle(article);
+        if(article1.isPresent()){
+            article1.get().setPriceArticle(article.getPriceArticle());
+            article1.get().setPicturesArticle(article.getPicturesArticle());
+            article1.get().setDescription(article.getDescription());
+            article1.get().setKitchen(article.getKitchen());
+            article1.get().setLastModifyAt(article.getLastModifyAt());
+            article1.get().setLivingRoom(article.getLivingRoom());
+            article1.get().setParent(article.getParent());
+            article1.get().setVideoArticles(article.getVideoArticles());
+            article1.get().setTypeArticle(article.getTypeArticle());
+            article1.get().setRoom(article.getRoom());
+            article1.get().setShower(article.getShower());
+            article1.get().setParking(article.getParking());
+            article1.get().setLastModifyBy(article.getLastModifyBy());
+
+            articlesRepository.save(article1.get());
+            return " Update Successfully";
+        }
+        else {
+            return "Article not Found";
+        }
     }
 
 
     @Override
-    public Optional<Article> searchArticle(Long id) {
-        return articlesRepository.findById(id);
+    public Optional<Article> searchArticle(Article article) {
+        return articlesRepository.findByArticle(article);
     }
 
     @Override

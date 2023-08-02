@@ -1,4 +1,4 @@
-package com.marcdev.rental_app.auth;
+package com.marcdev.rental_app.modelDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CreateArticle {
+public class ArticleDTO {
+
     private String typeArticle;
     private String country;
     private double priceArticle;
@@ -22,7 +23,7 @@ public class CreateArticle {
     private int parking;
     private int kitchen;
     private int livingRoom;
-    private String map_url;
+    private String mapUrl;
     private Long parent;
 
 }

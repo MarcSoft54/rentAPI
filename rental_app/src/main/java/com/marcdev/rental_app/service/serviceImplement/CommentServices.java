@@ -1,23 +1,36 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
-import com.marcdev.rental_app.model.Commenter;
+import com.marcdev.rental_app.modelDto.CommentDTO;
+import com.marcdev.rental_app.model.Article;
+import com.marcdev.rental_app.model.Comment;
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.CommentRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.CommentImplServices;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @Service
+@AllArgsConstructor
 public class CommentServices implements CommentImplServices {
-    @Autowired
+
     CommentRepository commentRepository;
 
     @Override
-    public Commenter createComment(Commenter commenter) {
-        return commentRepository.save(commenter);
+    public void createComment(CommentDTO commenter) {
+        var comment = Comment.builder()
+                .content(commenter.getContent())
+                .user(new User())
+                .article(new Article())
+                .createAt(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
+        commentRepository.save(comment);
     }
 
     @Override
-    public Iterable<Commenter> getComment() {
+    public Iterable<Comment> getComment() {
         return commentRepository.findAll();
     }
 }

@@ -1,4 +1,4 @@
-package com.marcdev.rental_app.auth;
+package com.marcdev.rental_app.modelDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,17 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @NoArgsConstructor
-public class CreateAccount{
+public class UserDTO {
 
     private String username;
     private String mail;
     private String passWord;
     private String surname;
     private String sex;
-    private Long phone_number;
+    private Long phoneNumber;
     private String country;
     private String role;
-
-
 
 }

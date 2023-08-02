@@ -1,29 +1,35 @@
 package com.marcdev.rental_app.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "ranking")
 public class Ranking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_ranking;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_users")
+    @JoinColumn(name = "user_id")
     User user;
 
     @ManyToOne
-    @JoinColumn(name = "id_articles")
+    @JoinColumn(name = "article_id")
     Article article;
 
-    @Column(name = "like")
+    @Column
     private Long like;
 
-    @Column(name = "dislike")
+    @Column
     private Long dislike;
 }

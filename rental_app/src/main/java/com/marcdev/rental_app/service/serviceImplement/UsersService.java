@@ -2,7 +2,7 @@ package com.marcdev.rental_app.service.serviceImplement;
 
 import com.marcdev.rental_app.auth.AuthentificationRequest;
 import com.marcdev.rental_app.auth.AuthentificationResponse;
-import com.marcdev.rental_app.auth.CreateAccount;
+import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.config.JwtService;
 import com.marcdev.rental_app.model.*;
 import com.marcdev.rental_app.repository.UsersRepository;
@@ -23,7 +23,7 @@ public class UsersService implements UsersImplService {
     private JwtService jwtService;
 
     @Override
-    public AuthentificationResponse createUser(CreateAccount account) {
+    public AuthentificationResponse createUser(UserDTO account) {
         Optional<User> user1 = usersRepository.findByEmail(account.getMail());
         if(user1.isPresent()){
             return AuthentificationResponse.builder().token("isPresent").build();
@@ -36,11 +36,11 @@ public class UsersService implements UsersImplService {
                 .country(account.getCountry())
                 .password(account.getPassWord())
                 .role(Role.ADMIN)
-                .phone_number(account.getPhone_number())
-                .commenters(new Commenter().getUser().getCommenters())
-                .articles(new Article().getUser().getArticles())
-                .subscribes(new Subscribe().getUser().getSubscribes())
-                .rankings(new Ranking().getUser().getRankings())
+                .phone_number(account.getPhoneNumber())
+                .comment(new Comment().getUser().getComment())
+                .article(new Article().getUser().getArticle())
+                .subscribe(new Subscribe().getUser().getSubscribe())
+                .ranking(new Ranking().getUser().getRanking())
                 .build();
 
         var jwtServices = jwtService.genereToken(users);

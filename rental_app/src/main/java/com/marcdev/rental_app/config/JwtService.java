@@ -1,6 +1,6 @@
 package com.marcdev.rental_app.config;
 
-import com.marcdev.rental_app.auth.CreateAccount;
+import com.marcdev.rental_app.model.CustomUserDetail;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,18 +30,18 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String genereToken(UserDetails userDetails){
-        return genereToken((new HashMap<>()), userDetails);
+    public String genereToken(CustomUserDetail customUserDetail){
+        return genereToken((new HashMap<>()), customUserDetail);
     }
 
     public String genereToken(
-            Map<String, Object> extraClaims, UserDetails userDetails
+            Map<String, Object> extraClaims, CustomUserDetail customUserDetail
     ){
         return Jwts.builder().setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(customUserDetail.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 10000))
-                .signWith(SignatureAlgorithm.HS256, getSignInKey())
+                .signWith(getSignInKey(),SignatureAlgorithm.HS256)
                 .compact();
     }
 
