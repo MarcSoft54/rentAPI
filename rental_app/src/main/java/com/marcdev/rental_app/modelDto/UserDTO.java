@@ -20,4 +20,11 @@ public class UserDTO {
     private String country;
     private String role;
 
+    public UserDTO(String username,
+                   String surname,
+                   String email,
+                   String country,
+                   Long phoneNumber,
+                   String sex) {
+    }
 }

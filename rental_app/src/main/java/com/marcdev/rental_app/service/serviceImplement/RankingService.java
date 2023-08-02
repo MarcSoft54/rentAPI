@@ -38,25 +38,18 @@ public class RankingService implements RankingImplService {
     }
 
     @Override
-    public void deleteLike(RankingDTO ranking) {
-        Optional<Ranking> ranking1 = rankingRepository.getLike(ranking.getLike());
-        if (ranking1.isPresent()){
-            rankingRepository.deleteAll();
-        }
+    public void deleteLike() {
+        rankingRepository.deleteAll();
     }
 
     @Override
     public void deleteDislike(RankingDTO ranking) {
-        Optional<Ranking> ranking1 = rankingRepository.getDislike(ranking.getDislike());
-        if(ranking1.isPresent()){
-            rankingRepository.deleteAll();
-        }
-    }
 
+    }
 
     @Override
     public Long getLike() {
-        return rankingRepository.getCountLike();
+        return rankingRepository.count();
     }
 
     @Override

@@ -23,10 +23,11 @@ public class UsersService implements UsersImplService {
     private JwtService jwtService;
 
     @Override
-    public AuthentificationResponse createUser(UserDTO account) {
+    public void createUser(UserDTO account) {
         Optional<User> user1 = usersRepository.findByEmail(account.getMail());
         if(user1.isPresent()){
-            return AuthentificationResponse.builder().token("isPresent").build();
+            AuthentificationResponse.builder().token("isPresent").build();
+            return;
         }
         var users = User.builder()
                 .username(account.getUsername())
@@ -34,17 +35,16 @@ public class UsersService implements UsersImplService {
                 .surname(account.getUsername())
                 .sex(account.getSex())
                 .country(account.getCountry())
-                .password(account.getPassWord())
+                .passWord(account.getPassWord())
                 .role(Role.ADMIN)
-                .phone_number(account.getPhoneNumber())
+                .phoneNumber(account.getPhoneNumber())
                 .comment(new Comment().getUser().getComment())
                 .article(new Article().getUser().getArticle())
                 .subscribe(new Subscribe().getUser().getSubscribe())
                 .ranking(new Ranking().getUser().getRanking())
                 .build();
-
         var jwtServices = jwtService.genereToken(users);
-      return  AuthentificationResponse.builder().token(jwtServices).build();
+        AuthentificationResponse.builder().token(jwtServices).build();
     }
 
     @Override
@@ -59,10 +59,10 @@ public class UsersService implements UsersImplService {
     public AuthentificationResponse updateUsers(AuthentificationRequest request, User user) {
         Optional<User> user1 = usersRepository.findByEmail(request.getEmail());
         if(user1.isPresent()){
-            user.setPassword(user.getPassword());
+            user.setPassWord(user.getPassword());
             user.setEmail(user.getEmail());
             user.setCountry(user.getCountry());
-            user.setPhone_number(user.getPhone_number());
+            user.setPhoneNumber(user.getPhoneNumber());
             user.setUsername(user.getUsername());
             user.setSurname(user.getSurname());
 
@@ -86,6 +86,11 @@ public class UsersService implements UsersImplService {
         var jwtServices = jwtService.genereToken(user);
 
         return AuthentificationResponse.builder().token(jwtServices).build();
+    }
+
+    @Override
+    public void getUser() {
+        usersRepository.findAll();
     }
 
 }

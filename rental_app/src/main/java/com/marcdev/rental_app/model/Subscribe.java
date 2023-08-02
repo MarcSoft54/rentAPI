@@ -26,6 +26,4 @@ public class Subscribe {
 
     @Column(name = "subscribe_at")
     private Timestamp subscribeAt;
-
-
 }

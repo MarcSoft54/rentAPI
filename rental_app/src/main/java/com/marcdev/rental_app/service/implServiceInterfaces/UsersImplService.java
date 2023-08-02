@@ -6,7 +6,7 @@ import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.model.User;
 
 public interface UsersImplService {
-    AuthentificationResponse createUser(UserDTO account);
+    void createUser(UserDTO account);
 
     void deleteUsers(AuthentificationRequest request);
 
@@ -14,4 +14,5 @@ public interface UsersImplService {
 
     AuthentificationResponse login(AuthentificationRequest request);
 
+    void getUser();
 }

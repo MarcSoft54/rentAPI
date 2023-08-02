@@ -1,10 +1,11 @@
 package com.marcdev.rental_app.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -14,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Table(name="user")
-public class User extends CustomUserDetail{
+public class User implements UserDetails {
     @OneToMany(mappedBy = "user")//article relationShip
     Set<Article> article;
 
@@ -30,29 +31,50 @@ public class User extends CustomUserDetail{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String username;
-
     @Column(nullable = false)
     private String surname;
-
     @Column(nullable = false)
     private String email;
-
     @Column(nullable = false)
-    private String password;
-
+    private String passWord;
     @Column
     private String sex;
-
     @Column( nullable = false)
-    private Long phone_number;
-
+    private Long phoneNumber;
     @Column
     private String country;
-
-    @Column(nullable = false)
+    @Column()
     private Role role;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

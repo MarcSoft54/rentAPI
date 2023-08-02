@@ -12,7 +12,7 @@ public interface ArticlesImplService {
 
     String updateArticle(Article article);
 
-    Optional<Article> searchArticle(Article article);
+    Optional<Article> searchArticle(Long id);
 
     Iterable<Article> getArticles();
 

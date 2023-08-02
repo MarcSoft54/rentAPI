@@ -8,7 +8,7 @@ public interface RankingImplService {
 
     boolean createDislike(RankingDTO ranking);
 
-    void deleteLike(RankingDTO ranking);
+    void deleteLike();
 
     void deleteDislike(RankingDTO ranking);
 

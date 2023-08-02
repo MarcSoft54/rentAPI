@@ -56,7 +56,7 @@ public class ArticlesService implements ArticlesImplService {
 
     @Override
     public String updateArticle(Article article) {
-        Optional<Article> article1 = articlesRepository.findByArticle(article);
+        Optional<Article> article1 = articlesRepository.findById(article.getId());
         if(article1.isPresent()){
             article1.get().setPriceArticle(article.getPriceArticle());
             article1.get().setPicturesArticle(article.getPicturesArticle());
@@ -82,8 +82,8 @@ public class ArticlesService implements ArticlesImplService {
 
 
     @Override
-    public Optional<Article> searchArticle(Article article) {
-        return articlesRepository.findByArticle(article);
+    public Optional<Article> searchArticle(Long id) {
+        return articlesRepository.findById(id);
     }
 
     @Override

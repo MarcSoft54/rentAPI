@@ -6,7 +6,6 @@ import com.marcdev.rental_app.repository.SubscribeRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.SubscribeImplService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -22,7 +21,7 @@ public class SubscribeService implements SubscribeImplService {
 
     @Override
     public boolean createSubscribe(boolean bool, User user) {
-        Optional<Subscribe> subscribe = subscribeRepository.findByMai(user.getEmail());
+        Optional<Subscribe> subscribe = subscribeRepository.findById(user.getId());
         if(subscribe.isPresent()){
             return false;
         }else {
@@ -39,7 +38,7 @@ public class SubscribeService implements SubscribeImplService {
 
     @Override
     public boolean deleteSubscribe(User user) {
-        Optional<Subscribe> subscribe = subscribeRepository.findByMai(user.getEmail());
+        Optional<Subscribe> subscribe = subscribeRepository.findById(user.getId());
         if (subscribe.isPresent()){
             subscribeRepository.deleteById(subscribe.get().getId());
             return true;

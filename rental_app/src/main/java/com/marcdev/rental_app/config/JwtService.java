@@ -1,6 +1,5 @@
 package com.marcdev.rental_app.config;
 
-import com.marcdev.rental_app.model.CustomUserDetail;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,22 +29,22 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String genereToken(CustomUserDetail customUserDetail){
-        return genereToken((new HashMap<>()), customUserDetail);
+    public String genereToken(UserDetails userDetails){
+        return genereToken((new HashMap<>()), userDetails);
     }
 
     public String genereToken(
-            Map<String, Object> extraClaims, CustomUserDetail customUserDetail
+            Map<String, Object> extraClaims, UserDetails userDetails
     ){
         return Jwts.builder().setClaims(extraClaims)
-                .setSubject(customUserDetail.getUsername())
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 10000))
                 .signWith(getSignInKey(),SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails){
+    public boolean isTokenValid(String token, org.springframework.security.core.userdetails.UserDetails userDetails){
         final String userName = extractName(token);
         return (userName.equals(userDetails.getUsername()))&& !isTokenExpired(token);
     }
