@@ -29,6 +29,10 @@ public class User extends CustomUserDetails{
     @OneToMany(mappedBy = "user")
     Set<Ranking> ranking;
 
+    @OneToMany(mappedBy = "user")
+    Set<Message> messages;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

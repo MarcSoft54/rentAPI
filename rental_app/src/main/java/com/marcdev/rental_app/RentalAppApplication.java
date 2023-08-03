@@ -23,6 +23,7 @@ public class RentalAppApplication implements CommandLineRunner {
 
 		UserController userController = new UserController();
 
+		user.setId(99L);
 		user.setCountry("Cameroun");
 		user.setPhoneNumber(657284175L);
 		user.setSex("Male");

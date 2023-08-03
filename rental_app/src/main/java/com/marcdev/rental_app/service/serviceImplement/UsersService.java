@@ -39,6 +39,7 @@ public class UsersService implements UsersImplService {
                 .passWord(account.getPassWord())
                 .role(Role.ADMIN)
                 .phoneNumber(account.getPhoneNumber())
+                .messages(new Message().getUser().getMessages())
                 .comment(new Comment().getUser().getComment())
                 .article(new Article().getUser().getArticle())
                 .subscribe(new Subscribe().getUser().getSubscribe())

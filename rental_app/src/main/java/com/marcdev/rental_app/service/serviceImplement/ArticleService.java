@@ -5,7 +5,7 @@ import com.marcdev.rental_app.model.Article;
 import com.marcdev.rental_app.model.Comment;
 import com.marcdev.rental_app.model.Ranking;
 import com.marcdev.rental_app.model.User;
-import com.marcdev.rental_app.repository.ArticlesRepository;
+import com.marcdev.rental_app.repository.ArticleRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.ArticlesImplService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,9 +16,9 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class ArticlesService implements ArticlesImplService {
+public class ArticleService implements ArticlesImplService {
 
-    private ArticlesRepository articlesRepository;
+    private ArticleRepository articleRepository;
 
 
     @Override
@@ -45,18 +45,18 @@ public class ArticlesService implements ArticlesImplService {
                 .comments(new Comment().getArticle().getComments())
                 .ranking(new Ranking().getArticle().getRanking())
                 .build();
-        articlesRepository.save(article1);
+        articleRepository.save(article1);
         return "Successful Registration";
     }
 
     @Override
     public void deleteArticle(Article article) {
-        articlesRepository.delete(article);
+        articleRepository.delete(article);
     }
 
     @Override
     public String updateArticle(Article article) {
-        Optional<Article> article1 = articlesRepository.findById(article.getId());
+        Optional<Article> article1 = articleRepository.findById(article.getId());
         if(article1.isPresent()){
             article1.get().setPriceArticle(article.getPriceArticle());
             article1.get().setPicturesArticle(article.getPicturesArticle());
@@ -72,7 +72,7 @@ public class ArticlesService implements ArticlesImplService {
             article1.get().setParking(article.getParking());
             article1.get().setLastModifyBy(article.getLastModifyBy());
 
-            articlesRepository.save(article1.get());
+            articleRepository.save(article1.get());
             return " Update Successfully";
         }
         else {
@@ -83,12 +83,12 @@ public class ArticlesService implements ArticlesImplService {
 
     @Override
     public Optional<Article> searchArticle(Long id) {
-        return articlesRepository.findById(id);
+        return articleRepository.findById(id);
     }
 
     @Override
     public Iterable<Article> getArticles() {
-        return articlesRepository.findAll();
+        return articleRepository.findAll();
     }
 
 }
