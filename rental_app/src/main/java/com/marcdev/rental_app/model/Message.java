@@ -17,7 +17,6 @@ import java.sql.Timestamp;
 @Table(name = "message", schema = "rent")
 public class Message {
 
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;

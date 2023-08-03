@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class RankingDTO {
 
-    private Long like;
-    private Long dislike;
+    private int like;
+    private int dislike;
 }

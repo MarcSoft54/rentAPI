@@ -2,15 +2,15 @@ package com.marcdev.rental_app.controller;
 
 import com.marcdev.rental_app.mapperModel.UserMapper;
 import com.marcdev.rental_app.model.User;
-import com.marcdev.rental_app.service.serviceImplement.UsersService;
+import com.marcdev.rental_app.service.serviceImplement.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserController {
     @Autowired
-    UsersService usersService;
+    UserService userService;
     @Autowired
     UserMapper mapper;
 
@@ -18,13 +18,13 @@ public class UserController {
     @ResponseBody
     public void createUser(@RequestBody User users){
         var user = mapper.toDto(users);
-        usersService.createUser(user);
+        userService.createUser(user);
     }
 
     @GetMapping
     @ResponseBody
     public void getUsers(){
-        usersService.getUser();
+        userService.getUser();
     }
 
 

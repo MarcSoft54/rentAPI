@@ -54,6 +54,5 @@ public class User extends CustomUserDetails{
     private Role role;
 
     public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
-        super();
     }
 }

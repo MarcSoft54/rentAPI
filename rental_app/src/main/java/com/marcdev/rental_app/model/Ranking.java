@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ranking", schema = "rent")
+@Table(name = "rankings", schema = "rent")
 public class Ranking {
 
     @ManyToOne
@@ -28,8 +28,8 @@ public class Ranking {
     private Long id;
 
     @Column
-    private Long like;
+    private int like;
 
     @Column
-    private Long dislike;
+    private int dislike;
 }

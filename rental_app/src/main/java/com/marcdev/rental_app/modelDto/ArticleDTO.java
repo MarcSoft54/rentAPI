@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +27,22 @@ public class ArticleDTO {
     private int livingRoom;
     private String mapUrl;
     private Long parent;
+    private Timestamp createAt;
 
+    public ArticleDTO(
+            String typeArticle,
+            String country,
+            double priceArticle,
+            String pictureArticle,
+            String videoArticle,
+            String description,
+            String city,
+            int room,
+            int showers,
+            int parking,
+            int kitchen,
+            int livingRoom,
+            String mapUrl) {
+
+    }
 }

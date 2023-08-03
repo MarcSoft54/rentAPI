@@ -19,6 +19,7 @@ public class RentalAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		User user = new User();
 
 		UserController userController = new UserController();
@@ -32,5 +33,6 @@ public class RentalAppApplication implements CommandLineRunner {
 		user.setPassWord("marcdev");
 
 		userController.createUser(user);
+
 	}
 }

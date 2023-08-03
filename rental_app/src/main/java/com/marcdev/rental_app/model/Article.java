@@ -67,4 +67,8 @@ public class Article {
     private User lastModifyBy;
     @Column
     private Timestamp lastModifyAt;
+
+    public Article(String typeArticle, String country, double priceArticle, Long parent, String pictureArticle, String videoArticle, String description, String city, int rooms, int parking, int livingRoom, String mapUrl) {
+    }
 }
+
