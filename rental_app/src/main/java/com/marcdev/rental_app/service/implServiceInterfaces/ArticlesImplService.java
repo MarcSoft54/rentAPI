@@ -6,7 +6,7 @@ import com.marcdev.rental_app.model.Article;
 import java.util.Optional;
 
 public interface ArticlesImplService {
-    String createArticle(ArticleDTO article);
+    void createArticle(ArticleDTO article);
 
     void deleteArticle(Article article);
 

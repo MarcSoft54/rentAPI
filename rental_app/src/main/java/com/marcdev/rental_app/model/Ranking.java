@@ -32,4 +32,8 @@ public class Ranking {
 
     @Column
     private int dislike;
+
+    public Ranking(int like, int dislike) {
+
+    }
 }

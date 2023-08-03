@@ -2,23 +2,21 @@ package com.marcdev.rental_app.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
 
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@Component
 @Data
+@Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Table(name="users", schema = "rent")
 public class User extends CustomUserDetails{
-
     @OneToMany(mappedBy = "user")//article relationShip
     Set<Article> article;
+
 
     @OneToMany(mappedBy = "user") //subscribes
     Set<Subscribe> subscribe;
@@ -52,6 +50,7 @@ public class User extends CustomUserDetails{
     private String country;
     @Column()
     private Role role;
+
 
     public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
     }

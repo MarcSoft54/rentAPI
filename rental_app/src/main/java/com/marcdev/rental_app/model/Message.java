@@ -31,4 +31,10 @@ public class Message {
     @Column
     private Timestamp createAt;
 
+    public Message(String content) {
+    }
+
+    public Message(String content, Timestamp createAt) {
+
+    }
 }

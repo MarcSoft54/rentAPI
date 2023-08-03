@@ -19,17 +19,16 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CommentServices implements CommentImplServices {
 
-    private CommentRepository commentRepository;
+   CommentRepository commentRepository;
+   UsersRepository usersRepository;
+   ArticleRepository articleRepository;
 
-   private UsersRepository usersRepository;
-
-    private ArticleRepository articleRepository;
     @Override
-    public void createComment(User user,CommentDTO commenter) {
+    public void createComment(User user,CommentDTO commentDTO) {
         Optional<User> user1 = usersRepository.findByEmail(user.getEmail());
         if(user1.isPresent()){
             var comment = Comment.builder()
-                    .content(commenter.getContent())
+                    .content(commentDTO.getContent())
                     .user(new User())
                     .article(new Article())
                     .createAt(Timestamp.valueOf(LocalDateTime.now()))

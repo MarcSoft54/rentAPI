@@ -61,8 +61,11 @@ public class RankingService implements RankingImplService {
     }
 
     @Override
-    public void deleteDislike(RankingDTO ranking) {
-
+    public void deleteDislike(User user) {
+        Optional<User> user1 = usersRepository.findByEmail(user.getEmail());
+        if(user1.isPresent()) {
+            rankingRepository.deleteAll();
+        }
     }
 
     @Override

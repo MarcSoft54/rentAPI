@@ -12,7 +12,7 @@ public interface RankingImplService {
 
     void deleteLike(User user);
 
-    void deleteDislike(RankingDTO ranking);
+    void deleteDislike(User user);
 
     Long getLike();
 

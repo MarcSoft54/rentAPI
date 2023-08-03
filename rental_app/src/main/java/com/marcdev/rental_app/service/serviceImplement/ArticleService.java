@@ -22,7 +22,7 @@ public class ArticleService implements ArticlesImplService {
 
 
     @Override
-    public String createArticle(ArticleDTO article) {
+    public void createArticle(ArticleDTO article) {
         var article1 = Article.builder()
                 .typeArticle(article.getTypeArticle())
                 .country(article.getCountry())
@@ -46,7 +46,6 @@ public class ArticleService implements ArticlesImplService {
                 .ranking(new Ranking().getArticle().getRanking())
                 .build();
         articleRepository.save(article1);
-        return "Successful Registration";
     }
 
     @Override
@@ -79,16 +78,12 @@ public class ArticleService implements ArticlesImplService {
             return "Article not Found";
         }
     }
-
-
     @Override
     public Optional<Article> searchArticle(Long id) {
         return articleRepository.findById(id);
     }
-
     @Override
     public Iterable<Article> getArticles() {
         return articleRepository.findAll();
     }
-
 }

@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ArticleDTO {
 
     private String typeArticle;

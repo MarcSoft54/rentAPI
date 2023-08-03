@@ -7,26 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class UserController {
-    @Autowired
     UserService userService;
-    @Autowired
     UserMapper mapper;
 
-    @PostMapping
+    @PostMapping("/user")
     @ResponseBody
     public void createUser(@RequestBody User users){
         var user = mapper.toDto(users);
         userService.createUser(user);
     }
 
-    @GetMapping
+    @GetMapping("/seeUser")
     @ResponseBody
     public void getUsers(){
         userService.getUser();
     }
-
-
 
 }

@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@Builder
-@NoArgsConstructor
+import java.sql.Timestamp;
+
 @Data
-public class RankingDTO {
-    private int like;
-    private int dislike;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class MessageDTO {
+    String content;
+    Timestamp createAt;
 }
