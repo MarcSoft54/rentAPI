@@ -6,28 +6,27 @@ import lombok.*;
 import java.util.Set;
 
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="users", schema = "rent")
-public class User extends CustomUserDetails{
-    @OneToMany(mappedBy = "user")//article relationShip
+public class Users {
+    @OneToMany(mappedBy = "users")//article relationShip
     Set<Article> article;
 
 
-    @OneToMany(mappedBy = "user") //subscribes
+    @OneToMany(mappedBy = "users") //subscribes
     Set<Subscribe> subscribe;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     Set<Comment> comment;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     Set<Ranking> ranking;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     Set<Message> messages;
 
 
@@ -52,6 +51,6 @@ public class User extends CustomUserDetails{
     private Role role;
 
 
-    public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
+    public Users(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
     }
 }
