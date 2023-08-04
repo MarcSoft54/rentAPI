@@ -1,7 +1,9 @@
 package com.marcdev.rental_app.model;
 
+import com.marcdev.rental_app.config.CustomUserDetails;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Set;
 
@@ -32,24 +34,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String surname;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String passWord;
     @Column
     private String sex;
-    @Column( nullable = false)
-    private Long phoneNumber;
+    @Column( nullable = false, unique = true)
+    private int phoneNumber;
     @Column
-    private String country;
+    private String country, columnDefinition = "TEXT";
     @Column()
     private Role role;
 
 
-    public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
+    public User(String username, String surname, String mail, String passWord, String sex, int phoneNumber, String country, String role) {
     }
 }

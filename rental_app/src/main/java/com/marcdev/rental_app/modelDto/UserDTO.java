@@ -16,7 +16,7 @@ public class UserDTO {
     private String passWord;
     private String surname;
     private String sex;
-    private Long phoneNumber;
+    private int phoneNumber;
     private String country;
     private String role;
 
@@ -24,7 +24,7 @@ public class UserDTO {
                    String surname,
                    String email,
                    String country,
-                   Long phoneNumber,
+                   int phoneNumber,
                    String sex) {
     }
 }

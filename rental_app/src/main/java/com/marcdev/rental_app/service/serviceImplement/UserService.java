@@ -2,7 +2,6 @@ package com.marcdev.rental_app.service.serviceImplement;
 
 import com.marcdev.rental_app.auth.AuthentificationRequest;
 import com.marcdev.rental_app.auth.AuthentificationResponse;
-import com.marcdev.rental_app.mapperModel.UserMapper;
 import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.config.JwtService;
 import com.marcdev.rental_app.model.*;
@@ -20,14 +19,15 @@ import java.util.Optional;
 public class UserService implements UsersImplService {
 
 
-    UserMapper userMapper;
     private UsersRepository usersRepository;
     private AuthenticationManager manager;
+
 
     @Override
     public AuthentificationResponse createUser(UserDTO account) {
         Optional<User> user1 = usersRepository.findByEmail(account.getMail());
         if (user1.isPresent()) {
+            System.out.println("here...is giving...");
             return AuthentificationResponse.builder().token("isPresent").build();
         } else {
             var users = User.builder()
@@ -70,7 +70,6 @@ public class UserService implements UsersImplService {
             user1.get().setPhoneNumber(user.getPhoneNumber());
 
             usersRepository.save(user1.get());
-
             return AuthentificationResponse.builder().token("update successfully").build();
         }
         return AuthentificationResponse.builder().token("update not available").build();

@@ -17,11 +17,12 @@ class RentalAppApplicationTests {
 	MockMvc mockMvc;
 
 	@MockBean
-	UserService userService;
+	private UserService userService;
 
 	@Test
-	void contextLoads() throws Exception {
-		mockMvc.perform(get("/api/signin")).andExpect(status().isOk());
+	void rentTest() throws Exception{
+		mockMvc.perform(get("/api/user")).andExpect(status().isOk());
+
 	}
 
 }

@@ -30,21 +30,21 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "type_article", nullable = false)
+    @Column(name = "type_article", nullable = false, columnDefinition = "TEXT")
     private String typeArticle;
     @Column(name = "price_article", nullable = false)
     private double priceArticle;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String country;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String city;
-    @Column(name = "map_url",nullable = false)
+    @Column(name = "map_url",nullable = false, columnDefinition = "TEXT")
     private String mapUrl;
-    @Column(name = "picture",nullable = false)
+    @Column(name = "picture",nullable = false, columnDefinition = "TEXT")
     private String picturesArticle;
-    @Column(name = "video", nullable = false)
+    @Column(name = "video", nullable = false, columnDefinition = "TEXT")
     private String videoArticles;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
     @Column
     private Long parent;
@@ -59,13 +59,13 @@ public class Article {
     @Column
     private int livingRoom;
 
-    @Column
+    @Column(unique = true)
     private Timestamp createAt;
-    @Column
+    @Column(unique = true)
     private User createBy;
-    @Column
+    @Column(unique = true)
     private User lastModifyBy;
-    @Column
+    @Column(unique = true)
     private Timestamp lastModifyAt;
 
     public Article(String typeArticle, String country, double priceArticle, Long parent, String pictureArticle, String videoArticle, String description, String city, int rooms, int parking, int livingRoom, String mapUrl) {

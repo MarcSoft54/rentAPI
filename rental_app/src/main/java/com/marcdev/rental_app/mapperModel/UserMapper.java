@@ -13,7 +13,7 @@ public class UserMapper {
         String surname = user.getSurname();
         String email = user.getEmail();
         String country = user.getCountry();
-        Long phoneNumber = user.getPhoneNumber();
+        int phoneNumber = user.getPhoneNumber();
         String sex = user.getSex();
 
         return new UserDTO(username, surname, email,

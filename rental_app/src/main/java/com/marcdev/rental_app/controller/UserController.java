@@ -22,8 +22,8 @@ public class UserController {
 
     @PostMapping("/signup")
     @ResponseBody
-    public ResponseEntity<AuthentificationResponse> signUp(@RequestParam ("UserDTO")UserDTO userDTO){
-        return ResponseEntity.ok(
+    public void signUp(@RequestParam ("UserDTO")UserDTO userDTO){
+        ResponseEntity.ok(
                 userService.createUser(userDTO)
         );
     }
