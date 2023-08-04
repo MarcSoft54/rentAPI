@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class RankingMapper {
 
     public RankingDTO toDto(Ranking ranking){
-        int like = ranking.getLike();
+        int like = ranking.getLikes();
         int dislike = ranking.getDislike();
         return new RankingDTO(like, dislike);
     }

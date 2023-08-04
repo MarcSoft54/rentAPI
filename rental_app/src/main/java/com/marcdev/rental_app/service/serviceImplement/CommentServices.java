@@ -1,9 +1,9 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.modelDto.CommentDTO;
 import com.marcdev.rental_app.model.Article;
 import com.marcdev.rental_app.model.Comment;
-import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.ArticleRepository;
 import com.marcdev.rental_app.repository.CommentRepository;
 import com.marcdev.rental_app.repository.UsersRepository;
@@ -24,7 +24,7 @@ public class CommentServices implements CommentImplServices {
    ArticleRepository articleRepository;
 
     @Override
-    public void createComment(User user,CommentDTO commentDTO) {
+    public void createComment(User user, CommentDTO commentDTO) {
         Optional<User> user1 = usersRepository.findByEmail(user.getEmail());
         if(user1.isPresent()){
             var comment = Comment.builder()

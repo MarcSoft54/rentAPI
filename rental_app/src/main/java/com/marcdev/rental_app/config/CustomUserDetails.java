@@ -1,11 +1,12 @@
-package com.marcdev.rental_app.model;
+package com.marcdev.rental_app.config;
 
+import com.marcdev.rental_app.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

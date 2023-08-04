@@ -2,6 +2,7 @@ package com.marcdev.rental_app.service.serviceImplement;
 
 import com.marcdev.rental_app.model.Message;
 import com.marcdev.rental_app.model.User;
+import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.repository.MessageRepository;
 import com.marcdev.rental_app.repository.UsersRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.MessageImplService;
@@ -16,8 +17,8 @@ public class MessageService implements MessageImplService {
     UsersRepository usersRepository;
 
     @Override
-    public void createMessage(User user, Message message) {
-        Optional<User> user1 = usersRepository.findByEmail(user.getEmail());
+    public void createMessage(UserDTO user, Message message) {
+        Optional<User> user1 = usersRepository.findByEmail(user.getMail());
         if(user1.isPresent()){
             var messages = Message.builder()
                     .content(message.getContent())

@@ -1,28 +1,56 @@
 package com.marcdev.rental_app.controller;
 
+import com.marcdev.rental_app.auth.AuthentificationRequest;
+import com.marcdev.rental_app.auth.AuthentificationResponse;
 import com.marcdev.rental_app.mapperModel.UserMapper;
 import com.marcdev.rental_app.model.User;
+import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.service.serviceImplement.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
+    @Autowired
     UserService userService;
-    UserMapper mapper;
+    @Autowired
+    UserMapper userMapper;
 
-    @PostMapping("/user")
+    @PostMapping("/signup")
     @ResponseBody
-    public void createUser(@RequestBody User users){
-        var user = mapper.toDto(users);
-        userService.createUser(user);
+    public ResponseEntity<AuthentificationResponse> signUp(@RequestParam ("UserDTO")UserDTO userDTO){
+        return ResponseEntity.ok(
+                userService.createUser(userDTO)
+        );
     }
 
-    @GetMapping("/seeUser")
+    @GetMapping("/user")
     @ResponseBody
-    public void getUsers(){
-        userService.getUser();
+    public ResponseEntity<Optional<User>> getUsers(@RequestParam ("email")String email){
+        return ResponseEntity.ok(
+                userService.getUser(email)
+        );
     }
+
+    @PostMapping("/signin")
+    public ResponseEntity<AuthentificationResponse> login(@RequestParam ("request")AuthentificationRequest request){
+        return ResponseEntity.ok(
+                userService.login(request)
+        );
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<AuthentificationResponse> updateUsers(@RequestParam ("request")AuthentificationRequest request, @RequestParam ("userDTO")UserDTO userDTO){
+        var users = userMapper.toUser(userDTO);
+        return ResponseEntity.ok(
+                userService.updateUsers(request, users)
+        );
+    }
+
+
 
 }

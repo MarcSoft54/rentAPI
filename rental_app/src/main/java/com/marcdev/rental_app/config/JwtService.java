@@ -1,6 +1,5 @@
 package com.marcdev.rental_app.config;
 
-import com.marcdev.rental_app.model.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,8 +15,7 @@ import java.util.function.Function;
 
 @Component
 public class JwtService {
-
-    private static final String SECRET_KEY = "01234567890123456789012345678901234567890123456789";
+    private static final String SECRET_KEY = "0T12O34G56U78E901T234A56T78I90E12K34A56M78M90A12R34C567W89I01L23L45I67A89M";
 
     public String extractName(String token){
         return extractClaim(token, Claims::getSubject);
@@ -32,6 +30,7 @@ public class JwtService {
     public String genereToken(CustomUserDetails customUserDetails){
         return genereToken((new HashMap<>()), customUserDetails);
     }
+
 
     public String genereToken(
             Map<String, Object> extraClaims, CustomUserDetails customUserDetails

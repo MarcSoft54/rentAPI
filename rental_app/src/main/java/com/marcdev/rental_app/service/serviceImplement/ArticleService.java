@@ -1,10 +1,10 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.modelDto.ArticleDTO;
 import com.marcdev.rental_app.model.Article;
 import com.marcdev.rental_app.model.Comment;
 import com.marcdev.rental_app.model.Ranking;
-import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.ArticleRepository;
 import com.marcdev.rental_app.service.implServiceInterfaces.ArticlesImplService;
 import lombok.AllArgsConstructor;
@@ -70,7 +70,6 @@ public class ArticleService implements ArticlesImplService {
             article1.get().setShower(article.getShower());
             article1.get().setParking(article.getParking());
             article1.get().setLastModifyBy(article.getLastModifyBy());
-
             articleRepository.save(article1.get());
             return " Update Successfully";
         }

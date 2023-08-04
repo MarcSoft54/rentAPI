@@ -1,9 +1,9 @@
 package com.marcdev.rental_app.service.serviceImplement;
 
+import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.modelDto.RankingDTO;
 import com.marcdev.rental_app.model.Article;
 import com.marcdev.rental_app.model.Ranking;
-import com.marcdev.rental_app.model.User;
 import com.marcdev.rental_app.repository.ArticleRepository;
 import com.marcdev.rental_app.repository.RankingRepository;
 import com.marcdev.rental_app.repository.UsersRepository;
@@ -27,7 +27,7 @@ public class RankingService implements RankingImplService {
         Optional<Article> article1 = articleRepository.findById(article.getId());
         if(user1.isPresent() && article1.isPresent()){
             var like = Ranking.builder()
-                    .like(ranking.getLike())
+                    .likes(ranking.getLike())
                     .user(new User())
                     .article(new Article())
                     .build();

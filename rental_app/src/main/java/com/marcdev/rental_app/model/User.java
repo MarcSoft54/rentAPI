@@ -11,22 +11,21 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="users", schema = "rent")
-public class Users {
-    @OneToMany(mappedBy = "users")//article relationShip
+@Table(name="user", schema = "rent")
+public class User {
+    @OneToMany(mappedBy = "user")//article relationShip
     Set<Article> article;
 
-
-    @OneToMany(mappedBy = "users") //subscribes
+    @OneToMany(mappedBy = "user") //subscribes
     Set<Subscribe> subscribe;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     Set<Comment> comment;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     Set<Ranking> ranking;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     Set<Message> messages;
 
 
@@ -51,6 +50,6 @@ public class Users {
     private Role role;
 
 
-    public Users(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
+    public User(String username, String surname, String mail, String passWord, String sex, Long phoneNumber, String country, String role) {
     }
 }

@@ -7,7 +7,6 @@ import com.marcdev.rental_app.model.Ranking;
 import com.marcdev.rental_app.modelDto.ArticleDTO;
 import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.service.serviceImplement.RankingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class RankingController {
-
 
     RankingService rankingService;
     RankingMapper rankingMapper;

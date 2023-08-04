@@ -2,11 +2,13 @@ package com.marcdev.rental_app.service.implServiceInterfaces;
 
 import com.marcdev.rental_app.auth.AuthentificationRequest;
 import com.marcdev.rental_app.auth.AuthentificationResponse;
-import com.marcdev.rental_app.modelDto.UserDTO;
 import com.marcdev.rental_app.model.User;
+import com.marcdev.rental_app.modelDto.UserDTO;
+
+import java.util.Optional;
 
 public interface UsersImplService {
-    void createUser(UserDTO account);
+    AuthentificationResponse createUser(UserDTO account);
 
     void deleteUsers(AuthentificationRequest request);
 
@@ -14,5 +16,5 @@ public interface UsersImplService {
 
     AuthentificationResponse login(AuthentificationRequest request);
 
-    void getUser();
+    public Optional getUser(String email);
 }

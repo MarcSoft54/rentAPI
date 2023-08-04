@@ -28,12 +28,12 @@ public class Ranking {
     private Long id;
 
     @Column
-    private int like;
+    private int likes;
 
     @Column
     private int dislike;
 
-    public Ranking(int like, int dislike) {
+    public Ranking(int likes, int dislike) {
 
     }
 }

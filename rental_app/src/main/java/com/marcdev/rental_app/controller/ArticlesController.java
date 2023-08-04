@@ -5,6 +5,7 @@ import com.marcdev.rental_app.modelDto.ArticleDTO;
 import com.marcdev.rental_app.model.Article;
 import com.marcdev.rental_app.service.serviceImplement.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,10 @@ public class ArticlesController {
     ArticleService articleService;
 
     @GetMapping("/see")
-    public Iterable<Article> getArticle(){
-        return articleService.getArticles();
+    public ResponseEntity<Iterable<Article>> getArticle(){
+        return ResponseEntity.ok(
+                articleService.getArticles()
+        );
     }
 
     @PostMapping("/")
@@ -30,8 +33,10 @@ public class ArticlesController {
     }
 
     @GetMapping("/search")
-    public Optional<Article> searchArticle(Long id){
-        return articleService.searchArticle(id);
+    public ResponseEntity<Optional<Article>> searchArticle(Long id){
+        return ResponseEntity.ok(
+                articleService.searchArticle(id)
+        );
     }
 
     @PostMapping("/del")

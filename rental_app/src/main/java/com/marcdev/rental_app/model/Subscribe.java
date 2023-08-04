@@ -26,4 +26,7 @@ public class Subscribe {
 
     @Column(name = "subscribe_at")
     private Timestamp subscribeAt;
+
+    @Column
+    private Long subscriber;
 }
